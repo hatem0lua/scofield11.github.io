@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacked</title>
+    <style>
+        body {
+            background-color: black;
+            color: rgb(247, 247, 247);
+            text-align: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .glitch-text {
+            font-size: 32px;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgb(247, 247, 247), 0 0 10px rgb(247, 247, 247), 0 0 15px rgb(247, 247, 247);
+        }
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 95%;
+            max-width: 800px;
+        }
+        .image-frame {
+            border: 2px solid rgb(247, 247, 247);
+            padding: 5px;
+            display: inline-block;
+        }
+        .image-frame img {
+            width: 100%;
+            max-width: 650px;
+            height: auto;
+        }
+        @keyframes stars {
+            0% { background-position: 0 0; }
+            100% { background-position: 1000px 1000px; }
+        }
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
+            animation: stars 50s linear infinite;
+        }
+        #ip-info {
+            margin-top: 20px;
+            font-size: 18px;
+            color: rgb(247, 247, 247);
+            text-shadow: 0 0 5px rgb(247, 247, 247);
+        }
+        .discord-text {
+            font-size: 36px; /* تكبير الخط أكثر */
+            font-weight: bold;
+            color: rgb(247, 247, 247);
+            text-shadow: 0 0 5px rgb(247, 247, 247), 0 0 10px rgb(247, 247, 247);
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            fetch('https://ipinfo.io/json')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("ip-info").innerHTML = `
+                        <p>IP: ${data.ip}</p>
+                        <p>City: ${data.city}</p>
+                        <p>Region: ${data.region}</p>
+                        <p>Country: ${data.country}</p>
+                        <p>ISP: ${data.org || "Unknown"}</p>
+                    `;
+                })
+                .catch(error => console.error('Error fetching IP info:', error));
+        };
+    </script>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="container"> 
+        <div class="glitch-text">By السيسي</div>
+        <br>
+        <div class="image-frame">
+            <img src="https://cdn.discordapp.com/attachments/1229087359287431259/1340366393974980608/4b21ece67c9a7486.gif?ex=67b218fb&is=67b0c77b&hm=0a931d66aeedf2c5d80ead8096d4df8845feddaeae4852499ee84267ca893fac&" alt="Hacked GIF">
+        </div>
+        <br>
+        <div id="ip-info"></div>
+        <div class="discord-text">السيسي اذا حظر الكل في خطر</div> <!-- تكبير الخط -->
+    </div>
+
+    <!-- تشغيل الأغنية تلقائيًا -->
+    <audio autoplay loop>
+        <source src="https://cdn.discordapp.com/attachments/1229087359287431259/1338359495679545415/7860467378.mp3?ex=67aacbe9&is=67a97a69&hm=48334f9feaca56151b1b634d26a7a896594287f8935eecf2cdea31e7ae23259a&" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+</body>
+</html>
